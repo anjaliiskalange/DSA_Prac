@@ -10,15 +10,18 @@ int main(){
     int test;
     cin>>test;
 
+    int n;
     int x;
-    for(int i=0;i<test;i++){
-        cin>>x;
-        if(x<=15){
-        cout<<"YES"<<endl;
+    while(test--){
+            int sum=0;
+            cin>>n;
+        for(int j=0;j<n;j++){
+            cin>>x;
+            if(x>=10 && x<=60){
+                sum++;
+            }
         }
-        else{
-            cout<<"NO"<<endl;
-        }
+        cout<<sum<<endl;
     }
 
         
