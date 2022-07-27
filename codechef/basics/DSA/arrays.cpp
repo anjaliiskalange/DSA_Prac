@@ -1,95 +1,95 @@
 #include <iostream>
 using namespace std;
 
-// struct Pair
-// {
-//     /* data */
-//     int min;
-//     int max;
-// };
+struct Pair
+{
+    /* data */
+    int min;
+    int max;
+};
 
-// struct Pair getMinMax(int arr[], int n)
-// {
-//     /* data */
-//     struct Pair minmax;
-//     int i;
+struct Pair getMinMax(int arr[], int n)
+{
+    /* data */
+    struct Pair minmax;
+    int i;
 
-//     if (n%2==0)
-//     {
-//         if(arr[0]>arr[1]){
-//             minmax.max=arr[0];
-//             minmax.min= arr[1];
-//         }
-//         else{
-//             minmax.max=arr[1];
-//             minmax.min=arr[0];
-//         }
-//         i=2;
-//     }
-//     else
-//     {
-//         minmax.min=arr[0];
-//         minmax.max=arr[0];
-//     }
-//     i=1;
+    if (n%2==0)
+    {
+        if(arr[0]>arr[1]){
+            minmax.max=arr[0];
+            minmax.min= arr[1];
+        }
+        else{
+            minmax.max=arr[1];
+            minmax.min=arr[0];
+        }
+        i=2;
+    }
+    else
+    {
+        minmax.min=arr[0];
+        minmax.max=arr[0];
+    }
+    i=1;
     
-//     while(i<n-1){
-//         if(arr[i]>arr[i+1]){
-//             if(arr[i]>minmax.max){
-//                 minmax.max=arr[i];
-//             }
-//             if(arr[i+1]<minmax.min){
-//                 minmax.min=arr[i+1];
-//             }
-//         }
+    while(i<n-1){
+        if(arr[i]>arr[i+1]){
+            if(arr[i]>minmax.max){
+                minmax.max=arr[i];
+            }
+            if(arr[i+1]<minmax.min){
+                minmax.min=arr[i+1];
+            }
+        }
 
-//         else
-//         {
-//             if(arr[i+1]>minmax.max){
-//                 minmax.max=arr[i+1];
-//             }
-//             if(arr[i]<minmax.min){
-//                 minmax.min=arr[i];
-//             }
-//         }
-//         i+=2;
-//     }
-//     return minmax;
-// };
+        else
+        {
+            if(arr[i+1]>minmax.max){
+                minmax.max=arr[i+1];
+            }
+            if(arr[i]<minmax.min){
+                minmax.min=arr[i];
+            }
+        }
+        i+=2;
+    }
+    return minmax;
+};
 
-// void reverseArray( int a[], int start, int end){
-//     while(start<end){
-//         int temp= a[start];
-//         a[start] = a[end];
-//         a[end]= temp;
-//         start ++;
-//         end--;
-//     }
-// }
+void reverseArray( int a[], int start, int end){
+    while(start<end){
+        int temp= a[start];
+        a[start] = a[end];
+        a[end]= temp;
+        start ++;
+        end--;
+    }
+}
 
-// void printArray(int a[], int size){
-//     for(int i=0;i<size;i++){
-//         cout<<a[i]<<" ";
-//     }
-//     cout<<endl;
-// }
+void printArray(int a[], int size){
+    for(int i=0;i<size;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
 
 
-// void maxSumSubarray( int b[] ,int n){
-//     int currsum=0;
-//     int maxsum=0;
+void maxSumSubarray( int b[] ,int n){
+    int currsum=0;
+    int maxsum=0;
 
-//     for(int i=0;i<n;i++){
-//         currsum= currsum+b[i];
-//         if(currsum>maxsum){
-//             maxsum=currsum;
-//         }
-//         if(currsum<0){
-//             currsum=0;
-//         }
-//     }
-//         cout<<maxsum<<endl;
-// }
+    for(int i=0;i<n;i++){
+        currsum= currsum+b[i];
+        if(currsum>maxsum){
+            maxsum=currsum;
+        }
+        if(currsum<0){
+            currsum=0;
+        }
+    }
+        cout<<maxsum<<endl;
+}
 
 void containDuplicate(int a[], int n){
     int i=0;
