@@ -132,11 +132,139 @@ double morePrecision(int k,int precision, int root){
     return ans;
 }
 
+bool isPossible(int a[], int n, int m, int mid){
+    int studentCount=1;
+    int pageSum=0;
+
+    for(int i=0;i<n;i++){
+        if(pageSum+a[i]<=mid){
+            pageSum+=a[i];
+        }
+        else{
+            studentCount++;
+            if(studentCount>m || a[i]>mid){
+                return false;
+            }
+            pageSum=0;
+            pageSum+=a[i];
+        }
+    }
+        return true;
+}
+
+int allocateBooks(int a[], int n, int m){
+    int s=0;
+    int sum =0;
+    for(int i=0; i<=n;i++){
+        sum+=a[i];
+    }
+    int e=sum;
+    int ans=-1;
+    int mid= s+ (e-s)/2;
+    while(s<=e){
+        if(isPossible(a,n,m,mid)){
+            ans=mid;
+            e=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+        mid = s +(e-s)/2;
+    }
+    return ans;
+}
+
+bool isPaint(int a[], int n, int k ,int mid){
+    int paintMen= 1;
+    int paintColor=0;
+    for(int i=0;i<n;i++){
+        if(paintColor + a[i] <=mid){
+            paintColor+=a[i];
+        }
+        else{
+            paintMen++;
+            if(paintMen >k || a[i]>mid){
+                return false;
+            }
+            paintColor=0;
+            paintColor+=a[i];
+        }
+    }
+        return true;
+
+}
+
+int painterAllotment(int a[], int n, int k){
+    int s=0;
+    int sum=0;
+    for(int i=0; i<=n;i++){
+        sum+=a[i];
+    }
+    int e= sum;
+    int ans=-1;
+    int mid=s+ (e-s)/2;
+    while(s<=e){
+        if(isPaint(a,n,k,mid)){
+            ans=mid;
+            e=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+        mid = s+ (e-s)/2;
+    }
+    return ans;
+}
+
+bool isCow(int a[], int n , int k ,int mid){
+    int cowCount=1;
+    int cowDist=a[0];
+    for(int i=0;i<n;i++){
+        if(a[i]-cowDist>=mid){
+            cowCount++; 
+            if(cowCount<=k){
+                return true;
+            }
+            cowDist=a[i];
+        }
+    }
+    return false;
+}
+
+int aggressiveCows(int a[], int n , int k){
+
+    //sort the array or vector
+    int s=0;
+    int maxi=-1;
+    for(int i=0;i<n;i++){
+        if(a[i]>maxi){
+            maxi=a[i];
+        }
+    }
+    int e=maxi;
+    int mid=s+(e-s)/2;
+    int ans=-1;
+
+    while(s<e){
+        if(isCow(a,n,k,mid)){
+            ans=mid;
+            s=mid+1;
+        }
+        else{
+            e=mid-1;
+        }
+
+        mid=s+(e-s)/2;
+    }
+    return ans;
+}
+
 int main(){
-    int a[] = {7,9,1,2,3};
+    int a[] = {5,5,5,5};
     int n = sizeof(a)/sizeof(a[0]);
+    int m =2;
     int key= 2;
-    int k=37;
+    int k=2;
 
     //int index= binarySearch(a,n,key);
     //cout<<"index is "<<index<<endl;
@@ -155,9 +283,15 @@ int main(){
     //     cout<< binarySearch(a,n,0,pivot,key);
     // }
 
-    int root = squareRoot(k);
-    // cout<<root<<endl;
-    cout<<morePrecision(k,3,root)<<endl;
+    // int root = squareRoot(k);
+    // // cout<<root<<endl;
+    // cout<<morePrecision(k,3,root)<<endl;
+
+    // int books= allocateBooks(a,n,m);
+    // cout<<books<<endl;
+
+    int paint=painterAllotment(a,n,k);
+    cout<<paint<<endl;
 
     return 0;
 }
