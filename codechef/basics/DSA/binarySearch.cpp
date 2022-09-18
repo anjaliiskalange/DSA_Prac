@@ -259,12 +259,108 @@ int aggressiveCows(int a[], int n , int k){
     return ans;
 }
 
+void merge(int *arr, int s,int e){
+    int mid=s+(e-s)/2;
+    int len1=mid-s+1;
+    int len2=e-mid;
+
+    int *first=new int[len1];
+    int *second = new int[len2];
+
+    int mainArrIndex=s;
+    for(int i=0;i<len1;i++){
+        first[i]=arr[mainArrIndex++];
+    }
+    mainArrIndex=mid+1;
+    for(int i=0;i<len2;i++){
+        second[i]=arr[mainArrIndex++];
+    }
+    int index1=0;
+    int index2=0;
+    mainArrIndex=s;
+    while(index1<len1 && index2<len2){
+        if(first[index1]<second[index2]){
+            arr[mainArrIndex++]=first[index1++];
+        }
+        else{
+            arr[mainArrIndex++]=second[index2++];
+        }
+    }
+    while(index1<len1){
+        arr[mainArrIndex++]=first[index1++];
+    }
+    while(index2<len2){
+        arr[mainArrIndex++]=second[index2++];
+    }
+
+    delete first;
+    delete second;
+}
+
+void mergeSort(int *arr, int s,int e){
+    if(s>=e){
+        return;
+    }
+    int mid = s+(e-s)/2;
+
+    mergeSort(arr,s,mid);
+    mergeSort(arr,mid+1,e);
+
+    merge(arr,s,e);
+}
+
+int partition(int a[], int s, int e){
+    int pivot = a[s];
+
+    int count=0;
+    for(int i=s+1;i<=e;i++){
+        if(a[i]<=pivot){
+            count++;
+        }
+    }
+
+    int pivotIndex=s+count;
+
+    swap(a[pivotIndex],a[s]);
+
+    int i=s,j=e;
+
+    while(i <pivotIndex && j>pivotIndex){
+        while(a[i]<pivot){
+            i++;
+        }
+        while(a[j]>pivot){
+            j--;
+        }
+        if(i<pivotIndex && j>pivotIndex){
+            swap(a[i++],a[j--]);
+        }
+    }
+    return pivotIndex;
+}
+
+void quickSort(int a[],int s,int e){
+    if(s>=e){
+        return;
+    }
+    int p=partition(a,s,e);
+
+    quickSort(a,s,p-1);
+    quickSort(a,p+1,e);
+}
+
 int main(){
-    int a[] = {5,5,5,5};
+    int a[] = {3,6,1,8,5};
     int n = sizeof(a)/sizeof(a[0]);
-    int m =2;
-    int key= 2;
-    int k=2;
+    //mergeSort(a,0,n-1);
+    quickSort(a,0,n-1);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+    // int m =2;
+    // int key= 2;
+    // int k=2;
 
     //int index= binarySearch(a,n,key);
     //cout<<"index is "<<index<<endl;
@@ -290,8 +386,8 @@ int main(){
     // int books= allocateBooks(a,n,m);
     // cout<<books<<endl;
 
-    int paint=painterAllotment(a,n,k);
-    cout<<paint<<endl;
+    // int paint=painterAllotment(a,n,k);
+    // cout<<paint<<endl;
 
     return 0;
 }

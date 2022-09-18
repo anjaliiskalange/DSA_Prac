@@ -138,10 +138,17 @@ int main(){
     // maxSumSubarray( b, n);
 
     // CONTAINS DUPLICATE
-    int a[]= {1, 3,4,2,1};
-    int n = sizeof(a)/sizeof(a[0]);
+    // int a[]= {1, 3,4,2,1};
+    // int n = sizeof(a)/sizeof(a[0]);
 
-    containDuplicate(a,n);
+    // containDuplicate(a,n);
+
+    // int row,col;
+
+    // int** arr = new int*[row];
+    // for(int i=0;i<row;i++){
+    //     arr[i]=new int[col];
+    cout<<((70%15)/2)<<endl;
 
      return 0;
 }

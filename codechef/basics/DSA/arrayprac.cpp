@@ -153,13 +153,83 @@ void tripletSum(int a[], int n){
 //     }
 // }
 
+int wavePrint(int a[][4], int row , int col){
+
+    for(int j=0;j<col;j++){
+        if(j&1){
+            //odd condition
+            for(int i=row-1;i>0;i--){
+                cout<<a[i][j]<<" ";
+            }
+        }
+        else{
+            for(int i=0;i<row;i++){
+                cout<<a[i][j]<<" ";
+            }
+        }
+    }
+
+}
+
+int spiral(int a[][4], int row , int col){
+    int startRow=0;
+    int startCol=0;
+    int endRow=row-1;
+    int endCol=col-1;
+
+    int count=0;
+    int total=row*col;
+
+    while(count<total){
+
+        //print 1st row
+        for(int i=startCol; count<total && i<=endCol;i++){
+            cout<<a[startRow][i]<<" ";
+            count++;
+        }
+        startRow++;
+
+        //print last col
+        for(int i=startRow; count<total && i<=endRow;i++){
+            cout<<a[i][endCol]<<" ";
+            count++;
+        }
+        endCol--;
+
+        //print last row
+        for(int i=endCol; count<total && i>=startCol;i--){
+            cout<<a[endRow][i]<<" ";
+            count++;
+        }
+        endRow--;
+
+        //print start col
+        for(int i=endRow; count<total && i>=startRow;i--){
+            cout<<a[i][startCol]<<" ";
+            count++;
+        }
+        startCol++;
+
+    }
+    
+}
+
+int rotate90(int a[][3], int row, int col){
+    for(int i=0;i<row;i++){
+        for(int j=col-1;j>=0;j--){
+            cout<<a[j][i]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
 int main(){
 
-    int a[]={1,2,5,3,4,3};
-    int b[]={2,2,3,3};
-    int v = sizeof(b)/sizeof(b[0]);
-    int n = sizeof(a)/sizeof(a[0]);
-    int key = 5;
+    // int a[]={1,2,5,3,4,3};
+    // int b[]={2,2,3,3};
+    // int v = sizeof(b)/sizeof(b[0]);
+    // int n = sizeof(a)/sizeof(a[0]);
+    // int key = 5;
 
     //maxArray(a,n);
     //sumArray(a,n);
@@ -185,7 +255,12 @@ int main(){
 
     //duplicates(a,n);
     //intersectionArray(a,b,n,v);
-    tripletSum(a,n);
+    // tripletSum(a,n);
+    int a[3][3]={{1,2,3},{5,6,7},{9,10,11}};
+
+    int ans= rotate90(a,3,3);
+    cout<<ans<<endl;
+
 
     return 0;
 }

@@ -103,15 +103,60 @@ int main(){
     //     cout<<endl;
     //     i++;
     // }
+    // while(i<=n){
+    //     int j=1;
+    //     while(j<=n){
+    //         cout<<i+j-1;
+    //         j++;
+    //     }
+    //     cout<<endl;
+    //     i++;
+    // }
+    // while(i<=n){
+    //     int j=1;
+    //     while(j<=n){
+    //         cout<<"*";
+    //         j++;
+    //     }
+    //     cout<<endl;
+    //     i++;
+    // }
+    // while(i<=n){
+    //     int j=1;
+    //     while(j<=n){
+    //         if(i==1 || j==1 || i==n || j==n){
+    //             cout<<"*";
+    //         }
+    //         else{
+    //             cout<<" ";
+    //         }
+    //         j++;
+    //     }
+    //     cout<<endl;
+    //     i++;
+    // }
+    // while(i<=n){
+    //     int j=0;
+    //     while(j<=i){
+    //         cout<<" ";
+    //         j++;
+    //     }
+    //     int k=1;
+    //     while(k<=n){
+    //         cout<<"*";
+    //         k++;
+    //     }
+    //     cout<<endl;
+    //     i++;
+    // }
     while(i<=n){
         int j=1;
-        while(j<=n){
-            cout<<i+j-1;
+        while(j<=i){
+            cout<<"* ";
             j++;
         }
         cout<<endl;
         i++;
     }
-    
     return 0;
 }
